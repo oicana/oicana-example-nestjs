@@ -59,7 +59,12 @@ export class TemplatesService {
 
     const [jsonInputs, blobInputs] = await this.prepareInputs(options);
     try {
-      const result = template.compile(jsonInputs, blobInputs, Pdf, CompilationMode.Development);
+      const result = template.compile(
+        jsonInputs,
+        blobInputs,
+        Pdf,
+        CompilationMode.Development,
+      );
       return ok(result);
     } catch (compilationException: unknown) {
       this.logger.error(compilationException);
@@ -89,10 +94,15 @@ export class TemplatesService {
 
     const [jsonInputs, blobInputs] = await this.prepareInputs(options);
     try {
-      const result = template.compile(jsonInputs, blobInputs, {
-        format: 'png',
-        pixelsPerPt: 1.0,
-      }, CompilationMode.Development);
+      const result = template.compile(
+        jsonInputs,
+        blobInputs,
+        {
+          format: 'png',
+          pixelsPerPt: 1.0,
+        },
+        CompilationMode.Development,
+      );
       return ok(result);
     } catch (compilationException: unknown) {
       this.logger.error(compilationException);
