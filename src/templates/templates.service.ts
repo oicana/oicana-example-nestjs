@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { BlobWithMetadata, CompilationMode, Template } from '@oicana/node';
+import { BlobWithMetadata, CompilationMode, Pdf, Template } from '@oicana/node';
 import { promises as fs } from 'fs';
 import { join } from 'path';
 import { BlobsService } from 'src/blobs/blobs.service';
@@ -36,8 +36,7 @@ export class TemplatesService {
         `${templateId}-${version}.zip`,
       );
       const buffer = await fs.readFile(fullPath);
-      const template = new Template(templateId, buffer);
-      template.setDefaultMode(CompilationMode.Development);
+      const template = new Template(buffer);
 
       this.templates.set(templateId, template);
     }
@@ -60,7 +59,7 @@ export class TemplatesService {
 
     const [jsonInputs, blobInputs] = await this.prepareInputs(options);
     try {
-      const result = template.compile(jsonInputs, blobInputs);
+      const result = template.compile(jsonInputs, blobInputs, Pdf, CompilationMode.Development);
       return ok(result);
     } catch (compilationException: unknown) {
       this.logger.error(compilationException);
@@ -93,7 +92,7 @@ export class TemplatesService {
       const result = template.compile(jsonInputs, blobInputs, {
         format: 'png',
         pixelsPerPt: 1.0,
-      });
+      }, CompilationMode.Development);
       return ok(result);
     } catch (compilationException: unknown) {
       this.logger.error(compilationException);
