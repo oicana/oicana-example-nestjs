@@ -17,6 +17,7 @@ export class TemplatesService {
 
   async onModuleInit() {
     await this.registerAllTemplates([
+      ['accessibility', '0.1.0'],
       ['certificate', '0.1.0'],
       ['dependency', '0.1.0'],
       ['fonts', '0.1.0'],
