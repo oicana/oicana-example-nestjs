@@ -1,10 +1,10 @@
 {
-  "name": "oicana-example-nestjs",
+  "name": "oicana-example-typescript-nestjs",
   "version": "0.0.1",
   "description": "Example application using the Oicana Node.js integration for PDF templating",
   "repository": {
     "type": "git",
-    "url": "https://github.com/oicana/oicana-example-nestjs"
+    "url": "https://github.com/oicana/oicana-example-typescript-nestjs"
   },
   "private": true,
   "license": "MIT",

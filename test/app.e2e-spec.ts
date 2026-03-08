@@ -16,10 +16,16 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
+  afterEach(async () => {
+    await app.close();
+  });
+
+  it('/templates (GET) should return a list of template IDs', () => {
     return request(app.getHttpServer())
-      .get('/')
+      .get('/templates')
       .expect(200)
-      .expect('Hello World!');
+      .expect((res) => {
+        expect(Array.isArray(res.body)).toBe(true);
+      });
   });
 });

@@ -64,7 +64,7 @@ export class TemplatesService {
         jsonInputs,
         blobInputs,
         Pdf,
-        CompilationMode.Development,
+        CompilationMode.Production,
       );
       return ok(result);
     } catch (compilationException: unknown) {
