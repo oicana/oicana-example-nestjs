@@ -1,5 +1,11 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { BlobWithMetadata, CompilationMode, Pdf, Template } from '@oicana/node';
+import {
+  BlobWithMetadata,
+  CompilationMode,
+  Pdf,
+  Png,
+  Template,
+} from '@oicana/node';
 import { promises as fs } from 'fs';
 import { join } from 'path';
 import { BlobsService } from 'src/blobs/blobs.service';
@@ -98,10 +104,7 @@ export class TemplatesService {
       const result = template.compile(
         jsonInputs,
         blobInputs,
-        {
-          format: 'png',
-          pixelsPerPt: 1.0,
-        },
+        Png(1.0),
         CompilationMode.Development,
       );
       return ok(result);
