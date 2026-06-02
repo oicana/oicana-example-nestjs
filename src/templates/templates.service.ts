@@ -81,7 +81,7 @@ export class TemplatesService {
           : String(compilationException);
       return err({
         errorMessage: `Failed to compile template with given inputs:\n${errorMessage}`,
-        statusCode: 404,
+        statusCode: 400,
       });
     }
   }
@@ -116,7 +116,7 @@ export class TemplatesService {
           : String(compilationException);
       return err({
         errorMessage: `Failed to compile template with given inputs:\n${errorMessage}`,
-        statusCode: 404,
+        statusCode: 400,
       });
     }
   }

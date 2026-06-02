@@ -39,8 +39,12 @@ export class TemplatesController {
     },
   })
   @ApiResponse({
+    status: 400,
+    description: 'Compilation failed for the given inputs',
+  })
+  @ApiResponse({
     status: 404,
-    description: 'Template not found or compilation failed',
+    description: 'Template not found',
   })
   async renderTemplate(
     @Res() res: Response,
@@ -93,8 +97,12 @@ export class TemplatesController {
     },
   })
   @ApiResponse({
+    status: 400,
+    description: 'Compilation failed for the given inputs',
+  })
+  @ApiResponse({
     status: 404,
-    description: 'Template not found or compilation failed',
+    description: 'Template not found',
   })
   async previewTemplate(
     @Res() res: Response,
