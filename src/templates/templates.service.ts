@@ -66,7 +66,7 @@ export class TemplatesService {
 
     const [jsonInputs, blobInputs] = await this.prepareInputs(options);
     try {
-      const result = template.compile(
+      const result = template.export(
         jsonInputs,
         blobInputs,
         Pdf,
@@ -101,7 +101,7 @@ export class TemplatesService {
 
     const [jsonInputs, blobInputs] = await this.prepareInputs(options);
     try {
-      const result = template.compile(
+      const result = template.export(
         jsonInputs,
         blobInputs,
         Png(1.0),
